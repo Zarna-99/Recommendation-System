@@ -24,7 +24,7 @@ with st.sidebar:
 
 users = pd.read_csv("Users.csv")
 rating = pd.read_csv("Ratings.csv")
-books = pd.read_csv("Books_detail.csv")
+books = pd.read_csv("Books_detail.csv",low_memory=False)
 bookurl = pd.read_csv("BookURL.csv")
 books = pd.concat([books,bookurl],axis=1)
 
@@ -245,7 +245,7 @@ def get_recommendations(input_book):
     for i, dataset in enumerate(datasets):
         
         dataset.append(input_book)
-        book_vectors = vectorizer.transform(dataset)
+        book_vectors = vectorizer.fit_transform(dataset)
 
         # Compute the cosine similarity
         similarity_scores = cosine_similarity(book_vectors)
