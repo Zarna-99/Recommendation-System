@@ -33,7 +33,7 @@ book_data_1 = pd.read_csv("Book_Data_1.csv")
 book_data_2 = pd.read_csv("Book_Data_2.csv")
 book_data = pd.concat([book_data_1,book_data_2],axis=1)
 
-data = pickle.load(open('datasets.pkl','rb'))
+datasets = pickle.load(open('datasets.pkl','rb'))
 
 #Data Cleaning
 temp = books[(books['Year-Of-Publication'] == 'DK Publishing Inc') | (books['Year-Of-Publication'] == 'Gallimard')]
@@ -242,10 +242,10 @@ def get_recommendations(input_book):
 
     recommendations = []
     scores=[]
-    for i, dataset in enumerate(data):
-        dataset = dataset.copy()
+    for i, dataset in enumerate(datasets):
+        
         dataset.append(input_book)
-        book_vectors = vectorizer.fit_transform(dataset)
+        book_vectors = vectorizer.transform(dataset)
 
         # Compute the cosine similarity
         similarity_scores = cosine_similarity(book_vectors)
