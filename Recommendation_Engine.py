@@ -258,7 +258,7 @@ def get_recommendations(input_book):
 
         # Sort the similar books by similarity score
         similar_books = sorted(similar_books, key=lambda x: x[1], reverse=True)
-        top_books = similar_books[1:]
+        top_books = similar_books[1:100]
 
         top_books_index = [t[0] for t in top_books]
         top_books_scores = [t[1] for t in top_books]
