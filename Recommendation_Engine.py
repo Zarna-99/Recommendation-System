@@ -170,7 +170,7 @@ if selected == "Books For You" :
     if not numb:
         st.write("Please Enter a valid User-ID:")
     else:
-
+        st.subheader("Book Recommendations For You")
         user_id = int(numb)
 
         if user_id not in users["User-ID"].unique():
@@ -297,6 +297,7 @@ if selected == "Browse Books":
 
     else:
         book_results = get_recommendations(input_book)
+        st.subheader("Showing Results For : " +input_book)
         display_books(book_results)
 
 
