@@ -22,18 +22,18 @@ with st.sidebar:
                             menu_icon="cast", default_index=0)
 
 
-users = pd.read_csv(r"D:\Study\Recommendations\Users.csv")
-rating = pd.read_csv(r"D:\Study\Recommendations\Ratings.csv")
-books = pd.read_csv(r"D:\Study\Recommendations\Books_detail.csv")
-bookurl = pd.read_csv(r"D:\Study\Recommendations\BookURL.csv")
+users = pd.read_csv("Users.csv")
+rating = pd.read_csv("Ratings.csv")
+books = pd.read_csv("Books_detail.csv")
+bookurl = pd.read_csv("BookURL.csv")
 books = pd.concat([books,bookurl],axis=1)
 
 
-book_data_1 = pd.read_csv(r"D:\Study\Recommendations\Book_Data_1.csv")
-book_data_2 = pd.read_csv(r"D:\Study\Recommendations\Book_Data_2.csv")
+book_data_1 = pd.read_csv("Book_Data_1.csv")
+book_data_2 = pd.read_csv("Book_Data_2.csv")
 book_data = pd.concat([book_data_1,book_data_2],axis=1)
 
-datasets = pickle.load(open('D:\Study\Recommendations\datasets.pkl','rb'))
+datasets = pickle.load(open('datasets.pkl','rb'))
 
 #Data Cleaning
 temp = books[(books['Year-Of-Publication'] == 'DK Publishing Inc') | (books['Year-Of-Publication'] == 'Gallimard')]
