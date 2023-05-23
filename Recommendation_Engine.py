@@ -243,7 +243,8 @@ def get_recommendations(input_book):
     recommendations = []
     scores=[]
     for i, dataset in enumerate(datasets):
-        dataset.append(input_book)
+        dataset_copy = dataset.copy()
+        dataset_copy.append(input_book)
         book_vectors = vectorizer.fit_transform(dataset)
 
         # Compute the cosine similarity
