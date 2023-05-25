@@ -256,10 +256,10 @@ if selected == "Browse Books":
             end_index = start_index+books_per_part
     
             if i == num_parts-1:
-                dataset = book_unique[start_index:]
+                dataset = book_unique[start_index:].tolist()
         
             else:
-                dataset = book_unique[start_index:end_index]
+                dataset = book_unique[start_index:end_index].tolist()
         
             dataset.append(input_book)
             book_vectors = vectorizer.fit_transform(dataset)
