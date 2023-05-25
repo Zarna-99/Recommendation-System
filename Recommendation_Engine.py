@@ -264,8 +264,9 @@ if selected == "Browse Books":
 #             st.write(dataset)
         
             dataset.append(input_book)
-            st.write(dataset)
-#             book_vectors = vectorizer.fit_transform(dataset)
+#             st.write(dataset)
+            book_vectors = vectorizer.fit_transform(dataset)
+            st.write(book_vectors)
             
 #             # Compute the cosine similarity
 #             similarity_scores = cosine_similarity(book_vectors)
