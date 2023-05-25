@@ -261,9 +261,10 @@ if selected == "Browse Books":
             else:
                 dataset = book_unique[start_index:end_index].tolist()
                 
-            st.write(dataset)
+#             st.write(dataset)
         
-#             dataset.append(input_book)
+            dataset.append(input_book)
+            st.write(dataset)
 #             book_vectors = vectorizer.fit_transform(dataset)
             
 #             # Compute the cosine similarity
