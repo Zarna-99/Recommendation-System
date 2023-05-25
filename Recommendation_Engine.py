@@ -33,8 +33,6 @@ book_data_1 = pd.read_csv("Book_Data_1.csv")
 book_data_2 = pd.read_csv("Book_Data_2.csv")
 book_data = pd.concat([book_data_1,book_data_2],axis=1)
 
-#datasets = pickle.load(open('datasets.pkl','rb'))
-
 #Data Cleaning
 temp = books[(books['Year-Of-Publication'] == 'DK Publishing Inc') | (books['Year-Of-Publication'] == 'Gallimard')]
 authors = []
@@ -202,7 +200,7 @@ if selected == "Books For You" :
             # set the index and column names to user ids
             user_sim_df.index = df1["User-ID"].unique()
             user_sim_df.columns = df1["User-ID"].unique()
-            # d = int(ID)
+            
             similar = user_sim_df.nlargest(2, user_id).index.values
 
             # extracting the books which is already read and rated by the specified user
