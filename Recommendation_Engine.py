@@ -244,9 +244,6 @@ if selected == "Browse Books":
         st.write("Please Enter a valid Book Title!")
 
     else:
-#         book_results = get_recommendations(input_book)
-#         st.subheader("Showing Results For : " +input_book)
-#         display_books(book_results)
         num_parts = 30
         books_per_part = len(book_unique) // num_parts
         recommendations = []
@@ -261,16 +258,12 @@ if selected == "Browse Books":
             else:
                 dataset = book_unique[start_index:end_index].tolist()
                 
-#             st.write(dataset)
         
             dataset.append(input_book)
-#             st.write(dataset)
             book_vectors = vectorizer.fit_transform(dataset)
-#             st.write(book_vectors)
             
             # Compute the cosine similarity
             similarity_scores = cosine_similarity(book_vectors)
-#             st.write(similarity_scores)
 
             # Get the index
             book_index = dataset.index(input_book)
@@ -310,71 +303,3 @@ if selected == "Browse Books":
           
         st.subheader("Showing Results For : " +input_book)
         display_books(book_results)
-
-
-
-
-
-
-# # Function to get book recommendations based on input
-# def get_recommendations(input_book):
-
-#     recommendations = []
-#     scores=[]
-#     for i, dataset in enumerate(datasets):
-        
-#         dataset.append(input_book)
-#         book_vectors = vectorizer.fit_transform(dataset)
-
-#         # Compute the cosine similarity
-#         similarity_scores = cosine_similarity(book_vectors)
-
-#         # Get the index
-#         book_index = dataset.index(input_book)
-
-#         # Get the cosine similarity scores for the book
-#         similar_books = list(enumerate(similarity_scores[book_index]))
-
-#         # Sort the similar books by similarity score
-#         similar_books = sorted(similar_books, key=lambda x: x[1], reverse=True)
-#         top_books = similar_books[1:100]
-
-#         top_books_index = [t[0] for t in top_books]
-#         top_books_scores = [t[1] for t in top_books]
-
-#         # Get the top N similar books
-#         top_books_name = [dataset[i] for i in top_books_index]
-
-#         recommendations.append(top_books_name)
-#         scores.append(top_books_scores)
-
-#     flat_list1 = [item for sublist in recommendations for item in sublist]
-#     flat_list2 = [item for sublist in scores for item in sublist]
-
-#     book_output = pd.DataFrame({'Column1': flat_list1, 'Column2': flat_list2})
-#     book_output.columns = ["Book-Title","Scores"]
-#     book_output.drop_duplicates(inplace=True)
-#     book_output = book_output.sort_values(by="Scores", ascending=False).head(100)
-
-#     if input_book in book_unique:
-#         book_results=get_book_data(book_output)
-#         book_results = pd.merge(book_output, book_results, on="Book-Title", how="inner").sort_values(by=["Scores","num_ratings","avg_rating"], ascending=False)
-
-#     else:
-#         book_output = book_output.drop(book_output[book_output['Book-Title'] == input_book].index)
-#         book_results = get_book_data(book_output)
-
-#     return book_results
-
-
-
-
-
-
-
-
-
-
-
-
-
