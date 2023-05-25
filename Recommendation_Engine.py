@@ -247,7 +247,7 @@ if selected == "Browse Books":
 #         book_results = get_recommendations(input_book)
 #         st.subheader("Showing Results For : " +input_book)
 #         display_books(book_results)
-        num_parts = 20
+        num_parts = 30
         books_per_part = len(book_unique) // num_parts
         recommendations = []
         scores = []
