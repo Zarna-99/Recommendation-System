@@ -182,9 +182,14 @@ if selected == "Books For You" :
                 u_id = user["User-ID"].values.tolist()[0]
                 location = user["Location"].values.tolist()[0]
                 age = user["Age"].values.tolist()[0]
-                rated = user_counts[[user_id]]
                 st.metric(label="User-ID", value=u_id)
                 st.metric(label="Age", value=age)
+                
+                if user_id not in user_counts.index:
+                    rated=0
+                else :
+                    rated=user_counts[[user_id]]
+                    
                 st.metric(label="Number of books rated", value=rated)
                 st.write("Location : ", location)
                 
