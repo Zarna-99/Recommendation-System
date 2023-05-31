@@ -176,6 +176,18 @@ if selected == "Books For You" :
         else:
             users_rating = pd.merge(books_rating, users, on="User-ID", how="right")
             user_counts = popular["User-ID"].value_counts()
+            
+            with st.sidebar:
+                user = users[(users["User-ID"] == user_id)]
+                u_id = user["User-ID"].values.tolist()[0]
+                location = user["Location"].values.tolist()[0]
+                age = user["Age"].values.tolist()[0]
+                rated = user_counts[(user_counts.index == user_id)]
+                st.metric(label="User-ID", value=u_id)
+                st.metric(label="Age", value=age)
+                st.metric(label="Number of books rated", value=rated)
+                st.write("Location : ", location)
+                
             rating_df_books = popular[popular['User-ID'].isin(user_counts[user_counts > 50].index)]
             book_counts = rating_df_books["Book-Title"].value_counts()
             rating_df_books = rating_df_books[rating_df_books['Book-Title'].isin(book_counts[book_counts >= 10].index)]
